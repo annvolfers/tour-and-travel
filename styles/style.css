@@ -495,8 +495,7 @@
   color: #848484;
   font-size: 18px;
   line-height: 28px;
-  margin-bottom: 55px;
-  padding-right: 40px;
+  padding: 0 40px 55px 0;
 }
 
 .footer__rights {
@@ -505,7 +504,7 @@
   color: #848484;
   font-size: 18px;
   line-height: 28px;
-  margin-bottom: 80px;
+  padding-bottom: 80px;
 }
 
 .footer__destinations {
@@ -550,13 +549,12 @@
   height: 0.6px;
   background: #C4C4C4;
   border-radius: 4px;
-  margin-bottom: 33px;
 }
 
 .footer__social {
   display: flex;
   justify-content: center;
-  margin-bottom: 33px;
+  padding: 33px 0;
   align-items: flex-end;
 }
 
