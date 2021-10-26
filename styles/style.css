@@ -85,12 +85,11 @@
   align-items: center;
   background-color: #00000080;
   visibility: hidden;
-  transition: all 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
 }
 
 .login__container.visible {
   visibility: visible;
-  transition: all 0.2s ease-out;
 }
 
 .login {
@@ -182,12 +181,11 @@
   align-items: center;
   background-color: #00000080;
   visibility: hidden;
-  transition: all 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
 }
 
 .register__container.visible {
   visibility: visible;
-  transition: all 0.2s ease-out;
 }
 
 .register {
