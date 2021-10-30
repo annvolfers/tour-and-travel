@@ -23,31 +23,8 @@
         <a href="" class="menu__link">Destinations</a>
         <a href="" class="menu__link">About</a>
         <a href="" class="menu__link">Partner</a>
-        <button class="menu__login-btn">Login</button>
-        <button class="menu__register-btn">Register</button>
-      </div>
-    </div>
-    <div class="login__container">
-      <div class="login">
-        <img class="login__close" src="images/close.svg" alt="">
-        <div class="login__header">Log in to Thousand Sunny</div>
-        <label for="user-login" class="user-login-label">Email or username</label>
-        <input type="text" id="user-login" class="user-login-input">
-        <label for="user-password" class="user-password-label">Password</label>
-        <input type="password" id="user-password" class="user-password-input">
-        <a href="" class="forgot-password">I forgot my password</a>
-        <input type="submit" value="Log in" class="login-submit-btn">    
-      </div>
-    </div>
-    <div class="register__container">
-      <div class="register">
-        <img class="register__close" src="images/close.svg" alt="">
-        <div class="register__header">Get started for free</div>
-        <label for="user-register" class="user-register-label">Email or username</label>
-        <input type="text" id="user-register" class="user-register-input">
-        <label for="user-new-password" class="user-new-password-label">Password</label>
-        <input type="password" id="user-new-password" class="user-new-password-input">
-        <input type="submit" value="Register" class="register-submit-btn">
+        <button class="menu__login-btn" id="loginBtn">Login</button>
+        <button class="menu__register-btn" id="registerBtn">Register</button>
       </div>
     </div>
     <div class="search">
@@ -55,30 +32,30 @@
         <div class="search__title">Explore and Travel</div>
         <div class="search__subtitle">Holiday finder</div>
         <div class="search__rectangle"></div>
-        <div class="search__fields">
-          <div class="location">
+        <div class="search__form">
+          <div class="search__form-item" id="searchFormItemLocation">
             <div class="select">
               <span class="select-text">Location</span>
-              <img src="images/select-arrow.svg" alt="">
+              <img class="arrow" src="images/select-arrow.svg" alt="">
             </div>
           </div>
-          <div class="activity">
+          <div class="search__form-item" id="searchFormItemActivity">
             <div class="select">
               <span class="select-text">Activity</span>
-              <img src="images/select-arrow.svg" alt="">
+              <img class="arrow" src="images/select-arrow.svg" alt="">
             </div>
           </div>
-          <div class="grade">
+          <div class="search__form-item" id="searchFormItemGrade">
             <div class="select">
               <span class="select-text">Grade</span>
-              <img src="images/select-arrow.svg" alt="">
+              <img class="arrow" src="images/select-arrow.svg" alt="">
             </div>
           </div>
-          <div class="date">
+          <div class="search__form-item" id="searchFormItemDate">
             <div class="select">
               <span class="select-text">Date</span>
-              <img src="images/select-arrow.svg" alt="">
-            </div>
+              <img class="arrow" src="images/select-arrow.svg" alt="">
+            </div> 
           </div>
         </div>
         <a href=""><button class="search__btn">Explore</button></a>
@@ -257,6 +234,62 @@
           <a href=""><img class="social-icon" src="images/youtube.svg" alt=""></a>
         </div>
       </div>
+    </div>
+    <div class="login__container" id="loginContainer"> 
+      <div class="login" id="loginBlock">
+        <img class="login__close" id="loginCloseBtn" src="images/close.svg" alt="">
+        <div class="login__header">Log in to Thousand Sunny</div>
+        <label for="user-login" class="user-login-label">Email or username</label>
+        <input type="text" id="user-login" class="user-login-input">
+        <label for="user-password" class="user-password-label">Password</label>
+        <input type="password" id="user-password" class="user-password-input">
+        <a href="" class="forgot-password">I forgot my password</a>
+        <input type="submit" value="Log in" class="login-submit-btn">
+      </div>
+    </div>
+    <div class="register__container" id="registerContainer">
+      <div class="register" id="registerBlock">
+        <img class="register__close" id="registerCloseBtn" src="images/close.svg" alt="">
+        <div class="register__header">Get started for free</div>
+        <label for="user-register" class="user-register-label">Email or username</label>
+        <input type="text" id="user-register" class="user-register-input">
+        <label for="user-new-password" class="user-new-password-label">Password</label>
+        <input type="password" id="user-new-password" class="user-new-password-input">
+        <input type="submit" value="Register" class="register-submit-btn">
+      </div>
+    </div>
+    <div class="overlay" id="overlay">
+        <div class="dropdown" id="dropdownLocation">
+          <span class="dropdown__item">Location 1</span>
+          <span class="dropdown__item">Location 2</span>
+          <span class="dropdown__item">Location 3</span>
+          <span class="dropdown__item">Location 4</span>
+          <span class="dropdown__item">Location 5</span>
+          <span class="dropdown__item">Location 6</span>
+        </div>
+        <div class="dropdown" id="dropdownActivity">
+          <span class="dropdown__item">Activity 1</span>
+          <span class="dropdown__item">Activity 2</span>
+          <span class="dropdown__item">Activity 3</span>
+          <span class="dropdown__item">Activity 4</span>
+        </div>
+        <div class="dropdown" id="dropdownGrade">
+          <span class="dropdown__item">Grade 1</span>
+          <span class="dropdown__item">Grade 2</span>
+          <span class="dropdown__item">Grade 3</span>
+          <span class="dropdown__item">Grade 4</span>
+          <span class="dropdown__item">Grade 5</span>
+          <span class="dropdown__item">Grade 6</span>
+          <span class="dropdown__item">Grade 7</span>
+          <span class="dropdown__item">Grade 8</span>
+          <span class="dropdown__item">Grade 9</span>
+        </div>
+        <div class="dropdown" id="dropdownDate">
+          <span class="dropdown__item">Date 1</span>
+          <span class="dropdown__item">Date 2</span>
+          <span class="dropdown__item">Date 3</span>
+          <span class="dropdown__item">Date 4</span>
+        </div>
     </div>
     <script src="scripts/script.js"></script>
   </body>
