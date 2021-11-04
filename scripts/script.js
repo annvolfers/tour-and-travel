@@ -86,3 +86,22 @@ function onSelectOptionClick(option) {
 
     selectWrapper.querySelector('.select-text').innerText = text;
 }
+
+// указания контекста для выполняемой функции
+
+// class MyClass {
+//     x = 0;
+
+//     onClick(e) {
+//         this.x++;
+//         this.print();
+//     }
+
+//     print() {
+//         console.log('clicked', this.x);
+//     }
+// }
+
+// const t = new MyClass();
+
+// document.addEventListener('click', t.onClick.bind(t));
