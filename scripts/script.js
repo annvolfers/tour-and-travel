@@ -34,75 +34,74 @@ function registerForm(event) {
 function closeFormEsc(event) {
     if (event.code == 'Escape' && loginContainer.classList.contains('visible')) {
         loginContainer.classList.remove('visible');
-    } if (event.code == 'Escape' && registerContainer.classList.contains('visible')) {
+    }
+    if (event.code == 'Escape' && registerContainer.classList.contains('visible')) {
         registerContainer.classList.remove('visible');
     }
 }
 
-
+// закрываем все селекты при клике на overlay
 const overlay = document.getElementById('overlay');
-const searchForm = document.querySelectorAll('.search__form-item');
-
-searchForm.forEach((item) => {
-    item.addEventListener('click', searchFormDropdown);
-})
-overlay.addEventListener('click', searchFormDropdown);
-
-let dropdown;
-let arrow;
-let searchFormItem;
-
-function searchFormDropdown(event) {
-    if (event.target.closest('.search__form-item')) {
-        
-        searchFormItem = document.getElementById(event.target.closest('.search__form-item').id);
-        let str = searchFormItem.id.substr("searchFormItem".length);
-        dropdown = document.getElementById('dropdown' + str);
-        arrow = searchFormItem.querySelector('.arrow');
-
-        overlay.classList.add('visible');
-        
-        let box = searchFormItem.getBoundingClientRect();
-        if (box.bottom + dropdown.offsetHeight < window.innerHeight) {
-            dropdown.style.top = box.bottom + 'px';
-            dropdown.style.left = box.left + 'px';
-            dropdown.classList.add('visible-down');
-        } else {
-            dropdown.style.top = box.top - dropdown.offsetHeight + 'px';
-            dropdown.style.left = box.left + 'px';
-            dropdown.classList.add('visible-up');
-        }
-
-        arrow.classList.add('rotate');
-        dropdown.addEventListener('mousedown', choice);
-        window.addEventListener('scroll', scrollListener);
-        
-    } else {
-        overlay.classList.remove('visible');
-        if (dropdown.classList.contains('visible-down')) { dropdown.classList.remove('visible-down') };
-        if (dropdown.classList.contains('visible-up')) { dropdown.classList.remove('visible-up') };
-        arrow.classList.remove('rotate');
-        window.removeEventListener('scroll', scrollListener);
-    };
-
-    function choice(event) {
-        if (event.target.parentElement === dropdown) {
-            let selectText = searchFormItem.querySelector('.select-text');
-            selectText.textContent = event.target.textContent;
-            selectText.classList.add('chosen');
-            dropdown.removeEventListener('mousedown', choice);
-        }
-    };  
-};
-
-function scrollListener() {
-    box = searchFormItem.getBoundingClientRect();
-    if (dropdown.classList.contains('visible-down')) {
-        dropdown.style.top = box.bottom + 'px';
-        dropdown.style.left = box.left + 'px';
-    } else if (dropdown.classList.contains('visible-up')) {
-        dropdown.style.top = box.top - dropdown.offsetHeight + 'px';
-        dropdown.style.left = box.left + 'px';
+overlay.addEventListener('click', function () {
+    for (let i = 0; i < selects.length; i++) {
+        const select = selects[i];
+        select.parentElement.classList.remove('opened');
     }
-};
 
+    overlay.classList.remove('visible');
+});
+
+const selects = document.querySelectorAll('.select');
+selects.forEach((select) => {
+    select.addEventListener('click', function (e) {
+        onSelectClick(select, e);
+    });
+});
+
+function onSelectClick(select) {
+    if (select.parentElement.classList.contains('opened')) {
+        select.parentElement.classList.remove('opened');
+        overlay.classList.remove('visible');
+    } else {
+        select.parentElement.classList.add('opened');
+        overlay.classList.add('visible');
+    }
+}
+
+const options = document.querySelectorAll('.dropdown__item');
+for (let i = 0; i < options.length; i++) {
+    const option = options[i];
+
+    option.addEventListener('click', function (e) {
+        onSelectOptionClick(option);
+    });
+}
+
+function onSelectOptionClick(option) {
+    const text = option.innerText;
+
+    const selectWrapper = option.closest('.select-wrapper');
+    selectWrapper.classList.remove('opened');
+    overlay.classList.remove('visible');
+
+    selectWrapper.querySelector('.select-text').innerText = text;
+}
+
+// указания контекста для выполняемой функции
+
+// class MyClass {
+//     x = 0;
+
+//     onClick(e) {
+//         this.x++;
+//         this.print();
+//     }
+
+//     print() {
+//         console.log('clicked', this.x);
+//     }
+// }
+
+// const t = new MyClass();
+
+// document.addEventListener('click', t.onClick.bind(t));

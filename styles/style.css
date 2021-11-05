@@ -2,6 +2,7 @@
   margin: 0;
   font-family: 'Inter', sans-serif;
   font-size: 15px;
+  box-sizing: border-box;
 }
 
 .header {
@@ -131,7 +132,7 @@
 .user-password-input {
   width: 220px;
   height: 37px;
-  border: 0.8px solid #AFB0B9;
+  border: 1px solid #AFB0B9;
   border-radius: 6px;
   margin-bottom: 10px;
 }
@@ -140,7 +141,7 @@
   display: block;
   color: #FB8F1D;
   text-decoration: none;
-  font-size: 17px; 
+  font-size: 17px;
   padding: 15px 0 25px;
 }
 
@@ -229,7 +230,7 @@
 .user-new-password-input {
   width: 220px;
   height: 37px;
-  border: 0.8px solid #AFB0B9;
+  border: 1px solid #AFB0B9;
   border-radius: 6px;
   margin-bottom: 10px;
 }
@@ -296,7 +297,6 @@
 .search__form-item {
   width: 220px;
   height: 52px;
-  border: 0.8px solid #AFB0B9;
   border-radius: 6px;
   margin-bottom: 30px;
   cursor: pointer;
@@ -306,10 +306,27 @@
   border-color: #FB8F1D;
 }
 
+.select-wrapper {
+  position: relative;
+  z-index: 101;
+}
+
+.select-wrapper.opened .dropdown {
+  visibility: visible;
+}
+
+.select-wrapper.opened .arrow {
+  transform: rotate(180deg);
+}
+
 .select {
   padding: 16px 30px;
   display: flex;
   justify-content: space-between;
+  border: 1px solid #AFB0B9;
+  border-radius: 8px;
+  overflow: hidden;
+  user-select: none;
 }
 
 .select-text {
@@ -320,30 +337,20 @@
   font-weight: bold;
 }
 
-.overlay {
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
-  position: fixed; 
-  top: 0;
-  left: 0;
-}
-
-.overlay.visible {
-  visibility: visible;
-}
-
 .dropdown {
+  position: absolute;
+  z-index: 101;
+  top: 100%;
   visibility: hidden;
   display: flex;
   flex-direction: column;
   background-color: white;
-  border: 0.8px solid #AFB0B9;
+  border: 1px solid #AFB0B9;
   position: absolute;
   width: 220px;
   max-height: 210px;
   overflow: auto;
-  scrollbar-width: thin; 
+  scrollbar-width: thin;
 }
 
 .dropdown::-webkit-scrollbar {
@@ -372,10 +379,6 @@
   border-bottom: none;
 }
 
-.arrow.rotate {
-  transform: rotate(180deg);
-}
-
 .dropdown__item {
   display: block;
   color: #4A4C53;
@@ -385,6 +388,20 @@
 
 .dropdown__item:hover {
   background-color: #F9F9FB;
+}
+
+.overlay {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.overlay.visible {
+  visibility: visible;
 }
 
 .search__btn {
@@ -497,7 +514,7 @@
 .link-text {
   color: #FB8F1D;
   text-decoration: none;
-  font-size: 17px; 
+  font-size: 17px;
   margin-right: 8px;
 }
 
@@ -516,7 +533,7 @@
 
 .destinations__image {
   display: block;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
 .destinations__text-block {
@@ -525,10 +542,10 @@
   height: 56px;
   min-width: 120px;
   bottom: 0;
-  border-radius: 0 8px;  
+  border-radius: 0 8px;
 }
 
-.destinations__city{
+.destinations__city {
   display: block;
   padding-top: 10px;
   font-weight: 600;
@@ -553,7 +570,7 @@
   padding: 150px 100px 0 0;
 }
 
-.app__title{
+.app__title {
   font-family: 'Playfair Display', serif;
   font-size: 36px;
   margin-bottom: 20px;
@@ -637,7 +654,7 @@
 
 .testimonials__image {
   display: block;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
 .testimonials__btn-block {
@@ -647,7 +664,7 @@
   width: 132px;
   bottom: 0;
   right: 0;
-  border-radius: 8px 0;  
+  border-radius: 8px 0;
 }
 
 .previous {
@@ -700,7 +717,7 @@
 }
 
 .trend__image {
-  border-radius: 8px 8px 0 0; 
+  border-radius: 8px 8px 0 0;
 }
 
 .trend__text-block {
@@ -715,7 +732,7 @@
   font-weight: bold;
   font-size: 19px;
   line-height: 30px;
-  color: #000000;  
+  color: #000000;
   margin-bottom: 13px;
 }
 
