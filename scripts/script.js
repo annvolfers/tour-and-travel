@@ -38,6 +38,13 @@ function closeFormEsc(event) {
     if (event.code == 'Escape' && registerContainer.classList.contains('visible')) {
         registerContainer.classList.remove('visible');
     }
+    if (event.code == 'Escape' && overlay.classList.contains('visible')) {
+        const select = document.querySelector('.select-wrapper.opened');
+        select.classList.remove('opened');
+        const dropdown = select.querySelector('.dropdown');
+        dropdown.classList.remove('down');
+        dropdown.classList.remove('up');
+    }
 }
 
 // закрываем все селекты при клике на overlay
@@ -46,6 +53,9 @@ overlay.addEventListener('click', function () {
     for (let i = 0; i < selects.length; i++) {
         const select = selects[i];
         select.parentElement.classList.remove('opened');
+        const dropdown = select.parentElement.querySelector('.dropdown');
+        dropdown.classList.remove('down');
+        dropdown.classList.remove('up');
     }
 
     overlay.classList.remove('visible');
@@ -54,16 +64,25 @@ overlay.addEventListener('click', function () {
 const selects = document.querySelectorAll('.select');
 selects.forEach((select) => {
     select.addEventListener('click', function (e) {
-        onSelectClick(select, e);
+        onSelectClick(select);
     });
 });
 
 function onSelectClick(select) {
+    const dropdown = select.parentElement.querySelector('.dropdown');
+
     if (select.parentElement.classList.contains('opened')) {
         select.parentElement.classList.remove('opened');
+        dropdown.classList.remove('down');
+        dropdown.classList.remove('up');
         overlay.classList.remove('visible');
     } else {
         select.parentElement.classList.add('opened');
+        if (select.getBoundingClientRect().bottom + dropdown.offsetHeight < window.innerHeight) {
+            dropdown.classList.add('down');
+        } else {
+            dropdown.classList.add('up');
+        }
         overlay.classList.add('visible');
     }
 }
@@ -82,10 +101,16 @@ function onSelectOptionClick(option) {
 
     const selectWrapper = option.closest('.select-wrapper');
     selectWrapper.classList.remove('opened');
+    const dropdown = selectWrapper.querySelector('.dropdown');
+    dropdown.classList.remove('down');
+    dropdown.classList.remove('up');
     overlay.classList.remove('visible');
 
-    selectWrapper.querySelector('.select-text').innerText = text;
+    const selectText = selectWrapper.querySelector('.select-text');
+    selectText.innerText = text;
+    selectText.style.fontWeight = 'bold';
 }
+
 
 // указания контекста для выполняемой функции
 
