@@ -32,18 +32,18 @@ function registerForm(event) {
 }
 
 function closeFormEsc(event) {
-    if (event.code == 'Escape' && loginContainer.classList.contains('visible')) {
-        loginContainer.classList.remove('visible');
-    }
-    if (event.code == 'Escape' && registerContainer.classList.contains('visible')) {
-        registerContainer.classList.remove('visible');
-    }
-    if (event.code == 'Escape' && overlay.classList.contains('visible')) {
-        const select = document.querySelector('.select-wrapper.opened');
-        select.classList.remove('opened');
-        const dropdown = select.querySelector('.dropdown');
-        dropdown.classList.remove('down');
-        dropdown.classList.remove('up');
+    if (event.code == 'Escape') {
+        if (loginContainer.classList.contains('visible')) {
+            loginContainer.classList.remove('visible');
+        }
+        if (registerContainer.classList.contains('visible')) {
+            registerContainer.classList.remove('visible');
+        }
+        if (overlay.classList.contains('visible')) {
+            const select = document.querySelector('.select-wrapper.opened');
+            select.classList.remove('opened', 'opened-down', 'opened-up');
+            overlay.classList.remove('visible');
+        }
     }
 }
 
@@ -52,10 +52,7 @@ const overlay = document.getElementById('overlay');
 overlay.addEventListener('click', function () {
     for (let i = 0; i < selects.length; i++) {
         const select = selects[i];
-        select.parentElement.classList.remove('opened');
-        const dropdown = select.parentElement.querySelector('.dropdown');
-        dropdown.classList.remove('down');
-        dropdown.classList.remove('up');
+        select.parentElement.classList.remove('opened', 'opened-down', 'opened-up');
     }
 
     overlay.classList.remove('visible');
@@ -72,16 +69,14 @@ function onSelectClick(select) {
     const dropdown = select.parentElement.querySelector('.dropdown');
 
     if (select.parentElement.classList.contains('opened')) {
-        select.parentElement.classList.remove('opened');
-        dropdown.classList.remove('down');
-        dropdown.classList.remove('up');
+        select.parentElement.classList.remove('opened', 'opened-down', 'opened-up');
         overlay.classList.remove('visible');
     } else {
         select.parentElement.classList.add('opened');
         if (select.getBoundingClientRect().bottom + dropdown.offsetHeight < window.innerHeight) {
-            dropdown.classList.add('down');
+            select.parentElement.classList.add('opened-down');
         } else {
-            dropdown.classList.add('up');
+            select.parentElement.classList.add('opened-up');
         }
         overlay.classList.add('visible');
     }
@@ -100,16 +95,53 @@ function onSelectOptionClick(option) {
     const text = option.innerText;
 
     const selectWrapper = option.closest('.select-wrapper');
-    selectWrapper.classList.remove('opened');
-    const dropdown = selectWrapper.querySelector('.dropdown');
-    dropdown.classList.remove('down');
-    dropdown.classList.remove('up');
+    selectWrapper.classList.remove('opened', 'opened-down', 'opened-up');
     overlay.classList.remove('visible');
 
     const selectText = selectWrapper.querySelector('.select-text');
     selectText.innerText = text;
     selectText.style.fontWeight = 'bold';
 }
+
+
+const nextImageBtn = document.getElementById('nextImageBtn');
+const nextImageBtnActive = document.getElementById('nextImageBtnActive');
+const previousImageBtn = document.getElementById('previousImageBtn');
+const previousImageBtnActive = document.getElementById('previousImageBtnActive');
+const imagesCarousel = document.getElementById('imagesCarousel');
+const images = document.querySelectorAll('.testimonials__image');
+const imageWidth = 394;
+let position = 0;
+
+nextImageBtnActive.addEventListener('click', function () {
+    if (Math.abs(position) < imageWidth * (images.length - 1)) {
+        position -= imageWidth;
+        imagesCarousel.style.transform = 'translateX(' + position + 'px)';
+
+        previousImageBtn.classList.remove('display');
+        previousImageBtnActive.classList.add('display');
+
+        if (Math.abs(position) === imageWidth * (images.length - 1)) {
+            nextImageBtnActive.classList.remove('display');
+            nextImageBtn.classList.add('display');
+        }
+    }
+});
+
+previousImageBtnActive.addEventListener('click', function () {
+    position += imageWidth;
+    imagesCarousel.style.transform = 'translateX(' + position + 'px)';
+
+    nextImageBtn.classList.remove('display');
+    nextImageBtnActive.classList.add('display');
+
+    if (Math.abs(position) === 0) {
+        previousImageBtnActive.classList.remove('display');
+        previousImageBtn.classList.add('display');
+    }
+});
+
+
 
 
 // указания контекста для выполняемой функции
