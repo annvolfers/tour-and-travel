@@ -1,3 +1,5 @@
+import '../styles/main.scss';
+
 const loginBtn = document.getElementById('loginBtn');
 const loginCloseBtn = document.getElementById('loginCloseBtn');
 const loginBlock = document.getElementById('loginBlock');
