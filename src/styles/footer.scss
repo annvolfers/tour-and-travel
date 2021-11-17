@@ -1,0 +1,93 @@
+.footer {
+    background-color: #F9F9FB;
+}
+
+.footer__container {
+    max-width: 1178px;
+    margin: 0px auto;
+}
+
+.footer__block {
+    display: flex;
+}
+
+.footer__info {
+    padding-right: 90px;
+}
+
+.footer__logo {
+    padding: 78px 0 26px;
+}
+
+.footer__text {
+    display: block;
+    font-family: 'Mulish', sans-serif;
+    color: #848484;
+    font-size: 18px;
+    line-height: 28px;
+    padding: 0 40px 55px 0;
+}
+
+.footer__rights {
+    display: block;
+    font-family: 'Mulish', sans-serif;
+    color: #848484;
+    font-size: 18px;
+    line-height: 28px;
+    padding-bottom: 80px;
+}
+
+.footer__destinations {
+    padding-right: 160px;
+}
+
+.footer__shop {
+    padding-right: 120px;
+    white-space: nowrap;
+}
+
+.footer__interests {
+    white-space: nowrap;
+}
+
+.footer__title {
+    font-weight: bold;
+    padding: 80px 0 25px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 19px;
+}
+
+.footer__link {
+    display: block;
+    font-family: 'Mulish', sans-serif;
+    color: #848484;
+    font-size: 19px;
+    text-decoration: none;
+    padding-bottom: 17px;
+
+    &:hover {
+        text-shadow: 2px 2px 5px #AFB0B9;
+    }
+
+    &:active {
+        color: #202336;
+    }
+}
+
+.footer__rectangle {
+    max-width: 1219px;
+    height: 0.6px;
+    background: #C4C4C4;
+    border-radius: 4px;
+}
+
+.footer__social {
+    display: flex;
+    justify-content: center;
+    padding: 33px 0;
+    align-items: flex-end;
+}
+
+.social-icon {
+    padding: 0 17px;
+}

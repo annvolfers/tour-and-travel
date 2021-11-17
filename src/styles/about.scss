@@ -1,0 +1,51 @@
+.about {
+    max-width: 1178px;
+    margin: 0px auto 290px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about__image {
+    position: relative;
+    right: 50px;
+}
+
+.about__form {
+    padding: 90px 0 0 50px;
+}
+
+.about__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+
+.about__text {
+    font-family: 'Mulish', sans-serif;
+    color: #7D7987;
+    font-size: 17px;
+    line-height: 30px;
+    margin-bottom: 40px;
+}
+
+.about__btn {
+    width: 164px;
+    height: 48px;
+    color: white;
+    background-color: #FB8F1D;
+    border: 1px solid #FB8F1D;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out;
+
+    &:hover {
+        color: #FB8F1D;
+        background-color: white;
+    }
+
+    &:active {
+        color: white;
+        background-color: #FB8F1D;
+    }
+}
