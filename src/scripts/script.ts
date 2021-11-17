@@ -17,23 +17,23 @@ registerCloseBtn.addEventListener('click', registerForm);
 registerContainer.addEventListener('click', registerForm);
 document.addEventListener('keydown', closeFormEsc);
 
-function loginForm(event) {
+function loginForm(event: MouseEvent) {
     if (event.target === loginBtn && !loginContainer.classList.contains('visible')) {
         loginContainer.classList.add('visible');
-    } else if ((event.target === loginCloseBtn || !loginBlock.contains(event.target)) && loginContainer.classList.contains('visible')) {
+    } else if ((event.target === loginCloseBtn || !loginBlock.contains(event.target as any)) && loginContainer.classList.contains('visible')) {
         loginContainer.classList.remove('visible');
     }
 }
 
-function registerForm(event) {
+function registerForm(event: MouseEvent) {
     if (event.target === registerBtn && !registerContainer.classList.contains('visible')) {
         registerContainer.classList.add('visible');
-    } else if ((event.target === registerCloseBtn || !registerBlock.contains(event.target)) && registerContainer.classList.contains('visible')) {
+    } else if ((event.target === registerCloseBtn || !registerBlock.contains(event.target as any)) && registerContainer.classList.contains('visible')) {
         registerContainer.classList.remove('visible');
     }
 }
 
-function closeFormEsc(event) {
+function closeFormEsc(event: any) {
     if (event.code == 'Escape') {
         if (loginContainer.classList.contains('visible')) {
             loginContainer.classList.remove('visible');
@@ -67,7 +67,7 @@ selects.forEach((select) => {
     });
 });
 
-function onSelectClick(select) {
+function onSelectClick(select: any) {
     const dropdown = select.parentElement.querySelector('.dropdown');
 
     if (select.parentElement.classList.contains('opened')) {
@@ -93,7 +93,7 @@ for (let i = 0; i < options.length; i++) {
     });
 }
 
-function onSelectOptionClick(option) {
+function onSelectOptionClick(option: any) {
     const text = option.innerText;
 
     const selectWrapper = option.closest('.select-wrapper');

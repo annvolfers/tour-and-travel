@@ -12,7 +12,7 @@ const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry: './scripts/script.js',
+    entry: './scripts/script.ts',
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist')
